@@ -327,7 +327,10 @@ class idapomidor_t(plugin_t):
         idapomidor_manager.show_pomidor()
 
     def term(self):
-        pass
+        global idapomidor_manager
+        if idapomidor_manager.timer.isActive():
+            idapomidor_manager.timer.stop()
+            del idapomidor_manager
         
 
 def PLUGIN_ENTRY():
